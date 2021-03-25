@@ -2,11 +2,13 @@
   <div>
     <p v-for="item in this.$store.state.news" v-bind:key="item.id">
       <a :href="item.url">
-        {{item.title}}
+        {{ item.title }}
       </a>
       <small>
-        {{item.time_ago}},
-        {{item.user}}
+        {{ item.time_ago }},
+        <router-link :to="`/user/${item.user}`">
+          {{ item.user }}
+        </router-link>
       </small>
     </p>
   </div>

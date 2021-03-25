@@ -1,23 +1,33 @@
 import axios from 'axios';
 
 const config = {
-    baseUrl: 'https://api.hnpwa.com/v0/'
-}
+  baseUrl: 'https://api.hnpwa.com/v0/',
+};
 
 function fetchNewsList() {
-    return axios.get(`${config.baseUrl}news/1.json`);
+  return axios.get(`${config.baseUrl}news/1.json`);
 }
 
 function fetchJobsList() {
-    return axios.get(`${config.baseUrl}jobs/1.json`);
+  return axios.get(`${config.baseUrl}jobs/1.json`);
 }
 
 function fetchAskList() {
-    return axios.get(`${config.baseUrl}ask/1.json`);
+  return axios.get(`${config.baseUrl}ask/1.json`);
+}
+
+function fetchUserInfo(userName) {
+  return axios.get(`https://api.hnpwa.com/v0/user/${userName}.json`);
+}
+
+function fetchItemNumber(itemNumber) {
+  return axios.get(`https://api.hnpwa.com/v0/item/${itemNumber}.json`);
 }
 
 export {
-    fetchNewsList,
-    fetchJobsList,
-    fetchAskList
-}
+  fetchNewsList,
+  fetchJobsList,
+  fetchAskList,
+  fetchUserInfo,
+  fetchItemNumber,
+};
