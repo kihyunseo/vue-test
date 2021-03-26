@@ -1,15 +1,19 @@
 <template>
   <div>
-    <p>{{ userInfo.id }}</p>
-    <p>{{ userInfo.karma }}</p>
-    <p>{{ userInfo.created }}</p>
+    <UserProfile :info="userInfo">
+      
+      <div slot="username">{{userInfo.id}}</div>
+    </UserProfile>
   </div>
 </template>
 
 <script>
-//import axios from 'axios';
+import UserProfile from '../components/UserProfile.vue';
 
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     userInfo() {
       return this.$store.state.user;
@@ -18,7 +22,6 @@ export default {
   created() {
     const userName = this.$route.params.id;
     this.$store.dispatch('FETCH_USER', userName);
-    //axios.get(`https://api.hnpwa.com/v0/user/${userName}.json`);
   },
 };
 </script>

@@ -2,17 +2,17 @@
   <div>
     <section>
       <!-- 질문 상세 정보 -->
-      <div>
-        <div>
-          사용자 프로필
+      <UserProfile :info="fetchedItem">
+        <div slot="username">
+          {{fetchedItem.id}}
         </div>
-        <div>
-          <router-link :to="`/user/${fetchedItem.user}`">{{
-            fetchedItem.user
-          }}</router-link>
-        </div>
-        <h2>{{ fetchedItem.title }}</h2>
-      </div>
+        <template slot="usercreated">
+          {{fetchedItem.created}}
+        </template>
+      </UserProfile>
+    </section>
+    <section>
+      <h2>{{ fetchedItem.title }}</h2>
     </section>
     <section>
       <!-- 질문 댓글 -->
@@ -23,8 +23,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import UserProfile from '../components/UserProfile.vue';
 
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     ...mapGetters(['fetchedItem']),
   },
