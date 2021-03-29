@@ -3,12 +3,10 @@
     <section>
       <!-- 질문 상세 정보 -->
       <UserProfile :info="fetchedItem">
-        <div slot="username">
-          {{fetchedItem.id}}
-        </div>
-        <template slot="usercreated">
-          {{fetchedItem.created}}
-        </template>
+        <router-link slot="username" :to="`/user/${fetchedItem.user}`">
+          {{ fetchedItem.user }}
+        </router-link>
+        <template slot="usercreated"> {{ fetchedItem.created }}, </template>
       </UserProfile>
     </section>
     <section>

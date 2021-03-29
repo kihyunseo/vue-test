@@ -24,10 +24,15 @@ function fetchItemNumber(itemNumber) {
   return axios.get(`https://api.hnpwa.com/v0/item/${itemNumber}.json`);
 }
 
+function fetchList(pageName) {
+  return axios.get(`${config.baseUrl}${pageName}/1.json`);
+}
+
 export {
   fetchNewsList,
   fetchJobsList,
   fetchAskList,
   fetchUserInfo,
   fetchItemNumber,
+  fetchList,
 };
